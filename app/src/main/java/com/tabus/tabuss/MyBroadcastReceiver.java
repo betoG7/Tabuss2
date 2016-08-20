@@ -15,6 +15,15 @@ import android.os.Vibrator;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.tabus.tabuss.Rutas.Banquetes;
+import com.tabus.tabuss.Rutas.BanquetesVerde;
+import com.tabus.tabuss.Rutas.Laureles;
+import com.tabus.tabuss.Rutas.Lienzo;
+import com.tabus.tabuss.Rutas.Potrerillos;
+import com.tabus.tabuss.Rutas.RioGrande;
+import com.tabus.tabuss.Rutas.VascoR;
+import com.tabus.tabuss.Rutas.VascoV;
+
 
 public class MyBroadcastReceiver extends BroadcastReceiver {
 
@@ -83,7 +92,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
         Notification.Builder builder =new Notification.Builder(context) ;
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        NotificationManager notificationManager = (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.icon, "¡Alarma!", System.currentTimeMillis());
         //  NotificationCompat.Builder notificacion = new NotificationCompat.Builder(MainActivity.this);
         RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.notification);

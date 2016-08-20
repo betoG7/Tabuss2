@@ -1,4 +1,4 @@
-package com.tabus.tabuss;
+package com.tabus.tabuss.Rutas;
 
 import android.app.NotificationManager;
 import android.database.Cursor;
@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,9 +15,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.tabus.tabuss.Principio;
+import com.tabus.tabuss.R;
+import com.tabus.tabuss.SMSReceiver;
+import com.tabus.tabuss.cursoQL;
 
 import java.util.StringTokenizer;
-
 import java.util.Timer;
 import java.util.TimerTask;
 /**
@@ -26,23 +28,20 @@ import java.util.TimerTask;
  */
 public class Laureles extends FragmentActivity {
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    private CameraUpdate cameraUpdate;
-
     Principio p=new Principio();
-
     SMSReceiver smsre=new SMSReceiver();
     double lt= smsre.getLati();
     double ln= smsre.getLongi();
-
     double latitud, longitud;
-
     cursoQL ch = new cursoQL(this, "BD", null, 1);
-
     String resultados="";
     String resultado="";
     String llenado[];
     int vari;
+    double lat = Principio.getLat();
+    double longi = Principio.getLongi();
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private CameraUpdate cameraUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,16 +201,11 @@ public class Laureles extends FragmentActivity {
 
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
     }
-
-
-
 
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
@@ -228,10 +222,6 @@ public class Laureles extends FragmentActivity {
             }
         }
     }
-
-
-    double lat=p.getLat();
-    double longi=p.getLongi();
 
     private void setUpMap() {
 

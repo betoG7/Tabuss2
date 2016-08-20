@@ -17,17 +17,44 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.tabus.tabuss.Rutas.Banquetes;
+import com.tabus.tabuss.Rutas.BanquetesVerde;
+import com.tabus.tabuss.Rutas.Juarez;
+import com.tabus.tabuss.Rutas.Laureles;
+import com.tabus.tabuss.Rutas.Lienzo;
+import com.tabus.tabuss.Rutas.Potrerillos;
+import com.tabus.tabuss.Rutas.RioGrande;
+import com.tabus.tabuss.Rutas.VascoR;
+import com.tabus.tabuss.Rutas.VascoV;
+
 
 /**
  * Created by Humberto on 18/03/2015.
  */
 public class Principio extends FragmentActivity {
 
+    private static final String FAVS = "Favoritos";
+    private static final String ALARM = "Alarma";
+    public static double lat = 0.0;
+    public static double longi = 0.0;
     LocationManager locationManager;
     EditText editText;
-    private static  final String FAVS="Favoritos";
-    private static final String ALARM="Alarma";
 
+    public static double getLat() {
+        return lat;
+    }
+
+    public static void setLat(double lat) {
+        Principio.lat = lat;
+    }
+
+    public static double getLongi() {
+        return longi;
+    }
+
+    public static void setLongi(double longi) {
+        Principio.longi = longi;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +111,6 @@ public class Principio extends FragmentActivity {
 
     }
 
-
-
-
-
-
     @Override
     protected void onRestart() {
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -128,58 +150,45 @@ public class Principio extends FragmentActivity {
         Intent i=new Intent(this,BanquetesVerde.class);
         startActivity(i);
     }
+
     public void mapaRioG(View v){
         Intent i=new Intent(this, RioGrande.class);
         startActivity(i);
     }
+
     public void mapaVascoVerde(View v){
         Intent i=new Intent(this, VascoV.class);
         startActivity(i);
     }
+
     public void mapaVascoRojo(View v){
         Intent i=new Intent(this, VascoR.class);
         startActivity(i);
     }
-    public void mapaLienzo(View v){
-        Intent i=new Intent(this, Lienzo.class);
-        startActivity(i);
-    }
-    public void mapaJuarez(View v){
-        Intent i=new Intent(this, Juarez.class);
+
+    public void mapaLienzo(View v) {
+        Intent i = new Intent(this, Lienzo.class);
         startActivity(i);
     }
 
-
-
-
-
-    public static double lat=0.0;
-    public static double longi=0.0;
-
-    public static double getLat() {
-        return lat;
+    public void mapaJuarez(View v) {
+        Intent i = new Intent(this, Juarez.class);
+        startActivity(i);
     }
 
-    public static void setLat(double lat) {
-        Principio.lat = lat;
+    @Override
+    protected void onDestroy() {
+        //LocationListener locationListener=new LL();
+        //locationManager.removeUpdates(locationListener);
+        // Toast.makeText(this,"OnDestroy", Toast.LENGTH_SHORT).show();
+        super.onDestroy();
     }
-
-    public static double getLongi() {
-        return longi;
-    }
-
-    public static void setLongi(double longi) {
-        Principio.longi = longi;
-    }
-
-
-
 
     public class LocationGPS extends AsyncTask<Void,Void,Void>{
 
+        public LL ll;
         ProgressDialog progressDialog=null;
 
-        public LL ll;
         @Override
         protected void onPreExecute() {
             ll=new LL();
@@ -225,8 +234,6 @@ public class Principio extends FragmentActivity {
 
     }
 
-
-
     public class LL implements LocationListener{
 
         @Override
@@ -257,17 +264,6 @@ public class Principio extends FragmentActivity {
         public void onProviderDisabled(String provider) {
 
         }
-    }
-
-
-
-
-    @Override
-    protected void onDestroy() {
-        //LocationListener locationListener=new LL();
-        //locationManager.removeUpdates(locationListener);
-       // Toast.makeText(this,"OnDestroy", Toast.LENGTH_SHORT).show();
-        super.onDestroy();
     }
 
 

@@ -39,89 +39,89 @@
 
         <activity
             android:name=".MapsActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
             android:name=".Principio"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_principal__main"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
 
         </activity>
         <activity
-            android:name=".Banquetes"
+            android:name=".Rutas.Banquetes"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".Laureles"
+            android:name=".Rutas.Laureles"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".Potrerillos"
+            android:name=".Rutas.Potrerillos"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".BanquetesVerde"
+            android:name=".Rutas.BanquetesVerde"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".RioGrande"
+            android:name=".Rutas.RioGrande"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".VascoR"
+            android:name=".Rutas.VascoR"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".VascoV"
+            android:name=".Rutas.VascoV"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".Lienzo"
+            android:name=".Rutas.Lienzo"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".Juarez"
+            android:name=".Rutas.Juarez"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
             android:name=".Alarma"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_alarma"
             android:parentActivityName=".Principal_Main"
             android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation"
             >
             <intent-filter>
                 <action android:name=
@@ -130,10 +130,10 @@
         </activity>
         <activity
             android:name=".Favs"
+            android:configChanges="keyboardHidden|orientation"
             android:label="Favoritos"
             android:parentActivityName=".Principal_Main"
             android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation"
             >
 
 
@@ -141,9 +141,9 @@
 
         <activity
             android:name=".Principal_Main"
+            android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_principal__main"
             android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation"
 
             >
 
@@ -155,29 +155,29 @@
         </activity>
 
         <activity android:name=".favoritos"
+            android:configChanges="keyboardHidden|orientation"
             android:label="Favoritos"
             android:parentActivityName="Principal_Main"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".elimina"
+            android:configChanges="keyboardHidden|orientation"
             android:label="Eliminar"
-            android:screenOrientation="portrait"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".veralarmas2"
-            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
             android:label="Lista"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <activity android:name=".ventanaalrma"
-            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
             android:label="Ver Alarmas"
             android:parentActivityName=".Principal_Main"
-            android:configChanges="keyboardHidden|orientation">
+            android:screenOrientation="portrait">
 
         </activity>
         <receiver android:name=".SMSReceiver"

@@ -1,4 +1,4 @@
-package com.tabus.tabuss;
+package com.tabus.tabuss.Rutas;
 
 import android.app.NotificationManager;
 import android.database.Cursor;
@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,6 +15,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.tabus.tabuss.Principio;
+import com.tabus.tabuss.R;
+import com.tabus.tabuss.SMSReceiver;
+import com.tabus.tabuss.cursoQL;
 
 import java.util.StringTokenizer;
 import java.util.Timer;
@@ -25,25 +28,21 @@ import java.util.TimerTask;
  */
 public class Banquetes extends FragmentActivity  {
 
-    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    private CameraUpdate cameraUpdate;
-
     Principio p=new Principio();
-
     SMSReceiver smsre=new SMSReceiver();
     double lt= smsre.getLati();
     double ln= smsre.getLongi();
-
    double latitud, longitud;
-
     cursoQL ch = new cursoQL(this, "BD", null, 1);
-
     String resultados="";
     String resultado="";
     String llenado[];
     int vari;
-
 Timer timer;
+    double lat = Principio.getLat();
+    double longi = Principio.getLongi();
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private CameraUpdate cameraUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -278,30 +277,6 @@ resultados="";
 
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setUpMapIfNeeded();
-    }
-
-
-    private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                mMap.setMyLocationEnabled(true);
-                setUpMap();
-
-            }
-        }
-    }
-
-
-
                      /*   SQLiteDatabase op = ch.getReadableDatabase();
                         Cursor cursor = op.rawQuery("SELECT * FROM gpscamionz ORDER BY id DESC LIMIT 1", null);
                         if (cursor.moveToFirst()) {
@@ -332,9 +307,26 @@ resultados="";
                         longitud= Double.parseDouble(llenado[3]);
                        */
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpMapIfNeeded();
+    }
 
-    double lat=p.getLat();
-    double longi= p.getLongi();
+    private void setUpMapIfNeeded() {
+        // Do a null check to confirm that we have not already instantiated the map.
+        if (mMap == null) {
+            // Try to obtain the map from the SupportMapFragment.
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                    .getMap();
+            // Check if we were successful in obtaining the map.
+            if (mMap != null) {
+                mMap.setMyLocationEnabled(true);
+                setUpMap();
+
+            }
+        }
+    }
 
     private void setUpMap() {
         //mMap.addMarker(new MarkerOptions().position(new LatLng(20.35474358, -102.05581295)).title("Marker"));
