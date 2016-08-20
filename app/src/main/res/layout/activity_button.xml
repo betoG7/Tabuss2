@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@drawable/lachida">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardDelta"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/d"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Delta"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_delta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaVer"
+                ></Button>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardBanquetesRojo"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+
+            android:layout_marginTop="130dp"
+            android:layout_alignParentLeft="true"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/br"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/text_BanRojo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:text="Banquetes Rojo"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_banq_Rojo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaBanquetes"
+                ></Button>
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/banqu_Verde"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+
+            android:layout_marginTop="130dp"
+            android:layout_alignParentRight="true">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bv"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="7dp"
+                android:text="Banquetes Verde"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_banq_Verde"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaBanVerde"
+                ></Button>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardVascoRojo"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+
+            android:layout_marginTop="210dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/vr"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/text_VascoRojo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:text="Vasco Rojo"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_vasco_Rojo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaVascoRojo"
+                ></Button>
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/vasco_Verde"
+            android:layout_width="160dp"
+            android:layout_height="100dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+
+            android:layout_marginTop="210dp"
+            android:layout_alignParentRight="true">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/vb"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:text="Vasco Verde"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_vasco_Verde"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaVascoVerde"
+                ></Button>
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardJuarez"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="290dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/j"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtJuarez"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Juarez"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_Juarez"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaJuarez"
+                ></Button>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardLaureles"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="420dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/l"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtLaureles"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Laureles"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_Laureles"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaLaureles"
+                ></Button>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardLienzo"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="550dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lc"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtLienzo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Lienzo Charro"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_Lienzo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaLienzo"
+                ></Button>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardPotrerillos"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="680dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/p"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtPotrerilloso"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Potrerilllos"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_Potrerillos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaPotre"
+                ></Button>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardRG"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="810dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/rg"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtRG"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:text="Rio Grande"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_RG"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="mapaRioG"
+                ></Button>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
+
+
+
+
+</LinearLayout>

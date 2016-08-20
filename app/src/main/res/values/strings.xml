@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Tabuss</string>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string name="mapa_delta">Delta</string>
+    <string name="mapa_banquetes">Banquetes</string>
+    <string name="title_activity_alarma">Alarma</string>
+
+
+    <string-array name="rutas">
+        <item>Lienzo Charro</item>
+        <item>Vasco Linea Verde</item>
+        <item>Vasco Linea Roja</item>
+        <item>Banquetes Linea Roja</item>
+        <item>Banquetes Linea Verde</item>
+        <item>Potrerillos</item>
+        <item>Laureles</item>
+        <item>Delta</item>
+        <item>Rio Grande</item>
+    </string-array>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_favs">Favs</string>
+    <string name="title_activity_principal__main">Tabuss</string>
+</resources>

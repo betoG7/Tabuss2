@@ -1,0 +1,103 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.got.mapagoo.Alarma"
+    android:background="@drawable/lachida"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardAgregar"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="0dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="50dp"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lol_alarm"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtagregar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="8dp"
+                android:text="Agregar Alarma"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_Agregar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+
+                android:onClick="agrealarma"
+                ></Button>
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardVerAlarma"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            card_view:cardBackgroundColor="#ffe3e3e3"
+            card_view:cardCornerRadius="6dp"
+            card_view:cardElevation="0dp"
+            card_view:cardUseCompatPadding="true"
+
+            android:layout_marginTop="200dp"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lista_alarma"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/txtVer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="8dp"
+                android:text="Ver Alarma"
+                android:layout_gravity="bottom"
+                android:background="#8c000000"
+                android:textColor="#ffe3e3e3"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btn_VER"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000"
+                android:onClick="veralarmas"
+                ></Button>
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

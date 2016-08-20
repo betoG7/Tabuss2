@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lachida"
+    >
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Spinner" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:text=""
+        android:id="@+id/pickTime"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="40dp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:text=""
+        android:id="@+id/btnCalendar"
+        android:layout_gravity="center_horizontal|left"
+        android:layout_marginTop="10dp"
+        android:textSize="40dp" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        card_view:cardBackgroundColor="#ffe3e3e3"
+        card_view:cardCornerRadius="6dp"
+        card_view:cardElevation="10dp"
+        card_view:cardUseCompatPadding="true"
+
+
+        android:layout_gravity="left">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/plus"
+            android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/text_Agregar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:text="Agregar"
+            android:layout_gravity="bottom"
+            android:background="#8c000000"
+            android:textColor="#ffe3e3e3"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+
+        <Button
+            android:id="@+id/btn_Agre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:onClick="guarda"
+            ></Button>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>

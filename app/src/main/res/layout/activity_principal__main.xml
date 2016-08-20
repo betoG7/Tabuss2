@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/lachida"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.got.mapagoo.Principal_Main"
+
+
+
+    android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="#3f51b5"
+        android:paddingTop="10dp"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView"
+            android:layout_marginLeft="15dp"
+            android:textColor="#ffe3e3e3"
+
+            android:text="Rutas"
+            android:textSize="25dp" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/imageButton"
+            android:src="@drawable/ic_directions_bus_white_24dp"
+            android:background="#3f51b5"
+            android:onClick="Route"
+            android:scaleType="fitXY"
+            android:layout_gravity="left"
+            android:layout_marginLeft="180dp"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

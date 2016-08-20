@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tabus.tabuss" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
+
+    <!--
+ The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/iconosimon"
+
+
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".Principio"
+            android:label="@string/title_activity_principal__main"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+
+        </activity>
+        <activity
+            android:name=".Banquetes"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+
+        <activity
+            android:name=".Laureles"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".Potrerillos"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".BanquetesVerde"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".RioGrande"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".VascoR"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".VascoV"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".Lienzo"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".Juarez"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity
+            android:name=".Alarma"
+            android:label="@string/title_activity_alarma"
+            android:parentActivityName=".Principal_Main"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
+            >
+            <intent-filter>
+                <action android:name=
+                    "android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Favs"
+            android:label="Favoritos"
+            android:parentActivityName=".Principal_Main"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
+            >
+
+
+        </activity>
+
+        <activity
+            android:name=".Principal_Main"
+            android:label="@string/title_activity_principal__main"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation"
+
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".favoritos"
+            android:label="Favoritos"
+            android:parentActivityName="Principal_Main"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity android:name=".elimina"
+            android:label="Eliminar"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity android:name=".veralarmas2"
+            android:screenOrientation="portrait"
+            android:label="Lista"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <activity android:name=".ventanaalrma"
+            android:screenOrientation="portrait"
+            android:label="Ver Alarmas"
+            android:parentActivityName=".Principal_Main"
+            android:configChanges="keyboardHidden|orientation">
+
+        </activity>
+        <receiver android:name=".SMSReceiver"
+            >
+            <intent-filter>
+                <action android:name=
+                    "android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+
+        </receiver>
+        <receiver android:name=".MyBroadcastReceiver"></receiver>
+        <service android:name=".TestService"
+            android:enabled="true"
+            android:exported="true"></service>
+    </application>
+
+
+</manifest>
