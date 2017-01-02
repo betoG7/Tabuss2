@@ -52,7 +52,7 @@ public class BanquetesVerde extends FragmentActivity {
 
         notificationManager.cancelAll();
 
-/**
+/***
  Timer timer = new Timer();
  timer.schedule(new TimerTask() {
 @Override public void run() {
