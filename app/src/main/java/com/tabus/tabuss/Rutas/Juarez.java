@@ -54,53 +54,51 @@ public class Juarez extends FragmentActivity {
 
         notificationManager.cancelAll();
 
-/*
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
+/**
+ Timer timer = new Timer();
+ timer.schedule(new TimerTask() {
+@Override public void run() {
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //
-                        resultados = "";
-                        SQLiteDatabase op = ch.getReadableDatabase();
-                        Cursor cursor = op.rawQuery("SELECT * FROM gpscamionz ORDER BY id DESC LIMIT 1", null);
-                        if (cursor.moveToFirst()) {
-                            do {
-                                resultados += "" + cursor.getString(1);
-                                // resultado += "" + cursor.getString(2);
-                                //  q=""+cursor.getString(3);
-                            }
-                            while (cursor.moveToNext());
+runOnUiThread(new Runnable() {
+@Override public void run() {
+//
+resultados = "";
+SQLiteDatabase op = ch.getReadableDatabase();
+Cursor cursor = op.rawQuery("SELECT * FROM gpscamionz ORDER BY id DESC LIMIT 1", null);
+if (cursor.moveToFirst()) {
+do {
+resultados += "" + cursor.getString(1);
+// resultado += "" + cursor.getString(2);
+//  q=""+cursor.getString(3);
+}
+while (cursor.moveToNext());
 
-                        }
-                        vari = resultados.length();
-                        llenado = new String[vari];
-                        int a = 0;
-                        StringTokenizer tokens = new StringTokenizer(resultados, ": ");
-                        while (tokens.hasMoreTokens()) {
-                            if (a < vari) {
-                                llenado[a] = tokens.nextToken();
-                                a++;
-                            }
-                        }
+}
+vari = resultados.length();
+llenado = new String[vari];
+int a = 0;
+StringTokenizer tokens = new StringTokenizer(resultados, ": ");
+while (tokens.hasMoreTokens()) {
+if (a < vari) {
+llenado[a] = tokens.nextToken();
+a++;
+}
+}
 
 
-                        //   Toast.makeText(this, resultados + " " + resultado + "" + q, Toast.LENGTH_SHORT).show();
-                        //  String a = sm.a;
-                        latitud = Double.parseDouble(llenado[1]);
-                        longitud = Double.parseDouble(llenado[3]);
+//   Toast.makeText(this, resultados + " " + resultado + "" + q, Toast.LENGTH_SHORT).show();
+//  String a = sm.a;
+latitud = Double.parseDouble(llenado[1]);
+longitud = Double.parseDouble(llenado[3]);
 
 
-                    }
-                });
+}
+});
 
-            }
-        }, 0, 5000);
+}
+}, 0, 5000);
 
-*/
+ **/
         mMap.addPolyline(new PolylineOptions().geodesic(true)
                 .add(new LatLng(20.372285, -102.032032)).width(10).color(Color.GREEN)
                 .add(new LatLng(20.372224, -102.031120)).width(10).color(Color.GREEN)
