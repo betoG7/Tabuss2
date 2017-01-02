@@ -31,20 +31,20 @@ import java.util.Locale;
 
 
 public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
-    Time time= new Time();
+    Time time = new Time();
     private int mHour;
     private int mMinute;
     static final int TIME_DIALOG_ID = 0;
     //private TextView tvDateValue;//mTimeDisplay
     Button mPickTime;
     Button mDataTime;
-    int año,comaño;
-    int meses,conmes;
-    int dia,comdia;
+    int año, comaño;
+    int meses, conmes;
+    int dia, comdia;
     int min;
     int hor;
     cursoQL ch = new cursoQL(this, "BD", null, 1);
-    String resultados="";
+    String resultados = "";
 
     private Activity context;
     int cont_alarm;
@@ -53,18 +53,17 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
     private Spinner sp;
     private List<String> lista;
     String resultadoss;
-    String resultados1="";
+    String resultados1 = "";
     ArrayList<String> rutas;
     String ruta;
     private int position;
-    cursoQL chelpp=new cursoQL(this, "DB", null, 1);
+    cursoQL chelpp = new cursoQL(this, "DB", null, 1);
 
 
     ArrayAdapter<CharSequence> adapterr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
 
         super.onCreate(savedInstanceState);
@@ -75,21 +74,19 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
         Cursor cursor = op.rawQuery("SELECT * FROM numerodealarmas ORDER BY id DESC LIMIT 1", null);
 
 
-
-        if(cursor.moveToFirst()){
-            do{
-                resultados+=""+cursor.getString(0);
+        if (cursor.moveToFirst()) {
+            do {
+                resultados += "" + cursor.getString(0);
 
             }
-            while(cursor.moveToNext());
+            while (cursor.moveToNext());
 
         }
 
-        if(resultados==""){
-            cont_alarm=0;
+        if (resultados == "") {
+            cont_alarm = 0;
 
-        }
-        else {
+        } else {
             // resultados+=0;
 
             cont_alarm = Integer.parseInt(resultados);
@@ -99,34 +96,33 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
         op.close();
 
 
-
         // cursor.close();
 
-       // Toast.makeText(this, "" + cont_alarm, Toast.LENGTH_SHORT).show();
-        mPickTime =(Button)findViewById(R.id.pickTime);
-        mDataTime =(Button)findViewById(R.id.btnCalendar);
+        // Toast.makeText(this, "" + cont_alarm, Toast.LENGTH_SHORT).show();
+        mPickTime = (Button) findViewById(R.id.pickTime);
+        mDataTime = (Button) findViewById(R.id.btnCalendar);
 
         time.setToNow();
-        min=time.minute;
-        hor=time.hour;
-        String botontiempo=""+hor+":"+min;
+        min = time.minute;
+        hor = time.hour;
+        String botontiempo = "" + hor + ":" + min;
         mPickTime.setText(botontiempo);
-        mPickTime.setOnClickListener(new View.OnClickListener(){
+        mPickTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showDialog(TIME_DIALOG_ID);
             }
         });
 
-        final Calendar c= Calendar.getInstance();
-        mHour =c.get(Calendar.HOUR);
-        mMinute =c.get(Calendar.MINUTE);
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR);
+        mMinute = c.get(Calendar.MINUTE);
         año = c.get(Calendar.YEAR);
         comaño = c.get(Calendar.YEAR);
-        conmes= c.get(Calendar.MONTH)+1;
-        meses = c.get(Calendar.MONTH)+1;
-        comdia= c.get(Calendar.DAY_OF_MONTH);
-        dia= c.get(Calendar.DAY_OF_MONTH);
-        String fecha=""+dia+"-"+meses+"-"+año;
+        conmes = c.get(Calendar.MONTH) + 1;
+        meses = c.get(Calendar.MONTH) + 1;
+        comdia = c.get(Calendar.DAY_OF_MONTH);
+        dia = c.get(Calendar.DAY_OF_MONTH);
+        String fecha = "" + dia + "-" + meses + "-" + año;
         mDataTime.setText(fecha);
         updateDisaplay();
 
@@ -136,7 +132,7 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
         context = this;
         // Definición del botón calendar
         final Button btnOpenPopup = (Button) findViewById(R.id.btnCalendar);
-        btnOpenPopup.setOnClickListener(new Button.OnClickListener(){
+        btnOpenPopup.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             /**
@@ -147,14 +143,13 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
             }
         });
 
-        s= (Spinner)findViewById(R.id.Spinner);
-        lista =new ArrayList<String>();
-        s=(Spinner)this.findViewById(R.id.Spinner);
+        s = (Spinner) findViewById(R.id.Spinner);
+        lista = new ArrayList<String>();
+        s = (Spinner) this.findViewById(R.id.Spinner);
 
         // datosSpinner();
 
         mostrar();
-
 
 
         s.setOnItemSelectedListener(this);
@@ -165,39 +160,33 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
         //  String sqll = "INSERT INTO favoritos(id,ruta) VALUES(null, '(selcciona ruta)')";
         //  db.execSQL(sqll);
 
-       // adapterr = ArrayAdapter.createFromResource(this, R.array.lzo, android.R.layout.simple_spinner_item);
+        // adapterr = ArrayAdapter.createFromResource(this, R.array.lzo, android.R.layout.simple_spinner_item);
     }
 
 
+    public void mostrar() {
+        lista = new ArrayList<String>();
 
-    public void mostrar (){
-        lista =new ArrayList<String>();
+        SQLiteDatabase op = chelpp.getReadableDatabase();
+        Cursor cursor = op.rawQuery("SELECT * FROM favoritos group by ruta", null);
 
-        SQLiteDatabase op=chelpp.getReadableDatabase();
-        Cursor cursor=op.rawQuery("SELECT * FROM favoritos group by ruta", null);
-
-        if(cursor.moveToFirst()){
-            do{
-                resultados1=cursor.getString(1);
-                resultadoss+=cursor.getString(1);
+        if (cursor.moveToFirst()) {
+            do {
+                resultados1 = cursor.getString(1);
+                resultadoss += cursor.getString(1);
 
 
-                ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,lista);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 s.setAdapter(adapter);
 
                 lista.add(resultados1);
-            }while(cursor.moveToNext());
+            } while (cursor.moveToNext());
 
         }
 
 
-
-
-
-
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
 
 
             @Override
@@ -205,12 +194,10 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
                                        int texto, long arg3) {
 
 
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
-
 
 
             }
@@ -220,35 +207,32 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
     }
 
 
+    public void cons(View v) {
 
-
-
-    public void cons (View v){
-
-        SQLiteDatabase op=chelpp.getReadableDatabase();
-        Cursor cursor=op.rawQuery("SELECT * FROM favoritos", null);
-        String resultados="";
-        if(cursor.moveToFirst()){
-            do{
-                resultados=cursor.getString(0)+" "+cursor.getString(1);
-                resultadoss+=cursor.getString(0)+" "+cursor.getString(1);
-                rutas.add(""+resultados.toString());
-            }while(cursor.moveToNext());
+        SQLiteDatabase op = chelpp.getReadableDatabase();
+        Cursor cursor = op.rawQuery("SELECT * FROM favoritos", null);
+        String resultados = "";
+        if (cursor.moveToFirst()) {
+            do {
+                resultados = cursor.getString(0) + " " + cursor.getString(1);
+                resultadoss += cursor.getString(0) + " " + cursor.getString(1);
+                rutas.add("" + resultados.toString());
+            } while (cursor.moveToNext());
 
         }
         cursor.close();
         op.close();
 
-       // Toast.makeText(getApplicationContext(),"" + resultados, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getApplicationContext(),"" + resultados, Toast.LENGTH_SHORT).show();
 
     }
-    protected void datosSpinner(){
+
+    protected void datosSpinner() {
 
 
         //  sp= (Spinner)findViewById(R.id.Spinner2);
 
         // sp=(Spinner)this.findViewById(R.id.Spinner2);
-
 
 
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -260,8 +244,7 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
                 // sp= (Spinner)findViewById(R.id.Spinner2);
 
 
-
-                if(ruta=="Lienzo charro") {
+                if (ruta == "Lienzo charro") {
 
 
                     ArrayAdapter<CharSequence> adapters;
@@ -270,8 +253,6 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
                     // Spinner spinner = (Spinner) findViewById(R.id.Spinner2);
 
 //Asignas el origen de datos desde los recursos
-
-
 
 
 //Asignas el layout a inflar para cada elemento
@@ -298,7 +279,6 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
             }
 
 
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
@@ -310,58 +290,56 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
     }
 
 
-
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View selectedItemView, int position, long id) {
         this.position = position;
-        String  selection = parent.getItemAtPosition(position).toString();
+        String selection = parent.getItemAtPosition(position).toString();
 
         //Mostramos la selección actual del Spinner
         //  Toast.makeText(this,"Selección actual: "+ruta,Toast.LENGTH_SHORT).show();
 
-        ruta=selection;
+        ruta = selection;
 
-        rut=selection;
-
-
-
+        rut = selection;
 
 
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(this,"no se a agregado rutas a favoritos aun ",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "no se a agregado rutas a favoritos aun ", Toast.LENGTH_SHORT).show();
     }
 
-    private void updateDisaplay(){
+    private void updateDisaplay() {
 /*
     mTimeDisplay.setText((
             new StringBuilder()
             .append(pad(mHour)).append(":"))
             .append(pad(mMinute)));
     */
-        min=mMinute;
-        hor=mHour;
+        min = mMinute;
+        hor = mHour;
     }
-    private static  String pad(int c){
-        if(c>=10)
+
+    private static String pad(int c) {
+        if (c >= 10)
             return String.valueOf(c);
         else
-            return "0"+String.valueOf(c);
+            return "0" + String.valueOf(c);
 
     }
+
     TimePickerDialog.OnTimeSetListener mTimeSetListener =
-            new TimePickerDialog.OnTimeSetListener(){
-                public void onTimeSet (TimePicker View, int hour0fDay, int minute){
-                    mHour=hour0fDay;
-                    mMinute=minute;
+            new TimePickerDialog.OnTimeSetListener() {
+                public void onTimeSet(TimePicker View, int hour0fDay, int minute) {
+                    mHour = hour0fDay;
+                    mMinute = minute;
                     updateDisaplay();
-                }};
+                }
+            };
 
     @Override
-    protected Dialog onCreateDialog(int id){
+    protected Dialog onCreateDialog(int id) {
         switch (id) {
             case TIME_DIALOG_ID:
                 return new TimePickerDialog(this,
@@ -371,18 +349,18 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
     }
 
 
-
     /**
      * Abre la ventana modal
+     *
      * @param v
      */
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(context.getFragmentManager(), "datePicker");
     }
+
     /**
      * Clase que se utiliza para abrir la ventana modal, extiende de DialogFragment.
-     *
      */
     public class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
@@ -412,12 +390,11 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
         /**
          * Recupera el valor seleccionado en el componente DatePicker e inserta el valor en el
          * y lo guardamos en la variable para enviarlo a la bd
-
          */
 
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            try{
+            try {
                 final Calendar c = Calendar.getInstance();
                 c.set(year, month, day);
                 String format = "MM-dd-yyyy";
@@ -425,8 +402,8 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
 
 
                 año = c.get(Calendar.YEAR);
-                meses = c.get(Calendar.MONTH)+1;
-                dia= c.get(Calendar.DAY_OF_MONTH);
+                meses = c.get(Calendar.MONTH) + 1;
+                dia = c.get(Calendar.DAY_OF_MONTH);
 
 
             } catch (Exception e) {
@@ -436,7 +413,8 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
     }
 
     String rut;
-    String primeraruta="(seleciona ruta)";
+    String primeraruta = "(seleciona ruta)";
+
     public void guarda(View v) {
 
         //     Toast.makeText(this, ""+rut, Toast.LENGTH_SHORT).show();
@@ -444,12 +422,12 @@ public class Alarma extends ActionBarActivity implements AdapterView.OnItemSelec
 
             Toast.makeText(this, "No ha seleccionado ruta", Toast.LENGTH_SHORT).show();
         } else {
-          //  Toast.makeText(this, ""+primeraruta, Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, ""+primeraruta, Toast.LENGTH_SHORT).show();
             SQLiteDatabase op = ch.getWritableDatabase();
             op.execSQL("INSERT INTO alarmas(id,año,mes,dia,hora,min,numalarma,ruta)  VALUES(null,'" + año + "'," + "'" + meses + "'" + "," + "'" + dia + "'" + "," + "'" + hor + "'" + "," + "'" + min + "'" + "," + "'" + cont_alarm + "'" + "," + "'" + rut + "')");
             op.execSQL("INSERT INTO numerodealarmas(id,cont)  VALUES (NULL,'" + 1 + "')");
             op.close();
-           Toast.makeText(this, "Se guardo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Se guardo", Toast.LENGTH_SHORT).show();
 
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

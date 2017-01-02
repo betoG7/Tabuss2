@@ -23,23 +23,24 @@ import com.tabus.tabuss.cursoQL;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
+
 /**
  * Created by Humberto on 25/04/2015.
  */
 public class Laureles extends FragmentActivity {
 
-    Principio p=new Principio();
-    SMSReceiver smsre=new SMSReceiver();
-    double lt= smsre.getLati();
-    double ln= smsre.getLongi();
+    Principio p = new Principio();
+    SMSReceiver smsre = new SMSReceiver();
+    double lt = smsre.getLati();
+    double ln = smsre.getLongi();
     double latitud, longitud;
     cursoQL ch = new cursoQL(this, "BD", null, 1);
-    String resultados="";
-    String resultado="";
+    String resultados = "";
+    String resultado = "";
     String llenado[];
     int vari;
-    double lat = Principio.getLat();
-    double longi = Principio.getLongi();
+  /*  double lat = Principio.getLat();
+    double longi = Principio.getLongi();*/
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private CameraUpdate cameraUpdate;
 
@@ -49,20 +50,20 @@ public class Laureles extends FragmentActivity {
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
 
-        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         notificationManager.cancelAll();
 
-        Timer timer =  new  Timer ();
-        timer . schedule ( new  TimerTask ()  {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
             @Override
-            public  void run ()  {
+            public void run() {
 
-                runOnUiThread ( new  Runnable (){
+                runOnUiThread(new Runnable() {
                     @Override
-                    public  void run (){
+                    public void run() {
                         //
-                        resultados="";
+                        resultados = "";
                         SQLiteDatabase op = ch.getReadableDatabase();
                         Cursor cursor = op.rawQuery("SELECT * FROM gpscamionz ORDER BY id DESC LIMIT 1", null);
                         if (cursor.moveToFirst()) {
@@ -74,44 +75,44 @@ public class Laureles extends FragmentActivity {
                             while (cursor.moveToNext());
 
                         }
-                        vari= resultados.length();
-                        llenado=new String[vari];
-                        int a=0;
-                        StringTokenizer tokens =new StringTokenizer(resultados,": ");
-                        while(tokens.hasMoreTokens()){
-                            if(a<vari){
-                                llenado[a]=tokens.nextToken();
+                        vari = resultados.length();
+                        llenado = new String[vari];
+                        int a = 0;
+                        StringTokenizer tokens = new StringTokenizer(resultados, ": ");
+                        while (tokens.hasMoreTokens()) {
+                            if (a < vari) {
+                                llenado[a] = tokens.nextToken();
                                 a++;
                             }
                         }
 
 
-                     //   Toast.makeText(this, resultados + " " + resultado + "" + q, Toast.LENGTH_SHORT).show();
+                        //   Toast.makeText(this, resultados + " " + resultado + "" + q, Toast.LENGTH_SHORT).show();
                         //  String a = sm.a;
-                        latitud= Double.parseDouble(llenado[1]);
-                        longitud= Double.parseDouble(llenado[3]);
+                        latitud = Double.parseDouble(llenado[1]);
+                        longitud = Double.parseDouble(llenado[3]);
 
 
                         mMap.addPolyline(new PolylineOptions().geodesic(true)
-                                        .add(new LatLng(20.343668, -102.024281)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343597, -102.023851)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.342984, -102.022789)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.342506, -102.023197)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343658, -102.024162)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343809, -102.025305)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.345549, -102.025691)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.346696, -102.026099)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.349602, -102.026104)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.353123, -102.026050)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.355970, -102.025953)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.358987, -102.025964)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.369081, -102.025739)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.376076, -102.025599)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.376111, -102.029473)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.377338, -102.029355)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.377529, -102.029580)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.377459, -102.025578)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.375799, -102.025610)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343668, -102.024281)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343597, -102.023851)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.342984, -102.022789)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.342506, -102.023197)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343658, -102.024162)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343809, -102.025305)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.345549, -102.025691)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.346696, -102.026099)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.349602, -102.026104)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.353123, -102.026050)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.355970, -102.025953)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.358987, -102.025964)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.369081, -102.025739)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.376076, -102.025599)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.376111, -102.029473)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.377338, -102.029355)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.377529, -102.029580)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.377459, -102.025578)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.375799, -102.025610)).width(10).color(Color.GREEN)
 
 
                         );
@@ -177,12 +178,6 @@ public class Laureles extends FragmentActivity {
                                 .snippet("Mercado Cd. del Sol"));
 
 
-
-
-
-
-
-
                         mMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(20.342514, -102.023239))
                                 .title("Parada oficial")
@@ -190,14 +185,11 @@ public class Laureles extends FragmentActivity {
                                 .snippet("Aquiles Serdan"));
 
 
-
-
-
                     }
                 });
 
             }
-        },  0 ,  5000 );
+        }, 0, 5000);
 
     }
 
@@ -226,7 +218,8 @@ public class Laureles extends FragmentActivity {
     private void setUpMap() {
 
         //mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Marker"));20.349577, -102.036094
-        cameraUpdate= CameraUpdateFactory.newLatLngZoom(new LatLng(lat, longi), 15);
+        cameraUpdate= CameraUpdateFactory.newLatLngZoom(new LatLng(20.349577, -102.036094),15);
+//        cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, longi), 15);
         mMap.animateCamera(cameraUpdate);
     }
 }

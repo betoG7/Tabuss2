@@ -23,22 +23,21 @@ public class elimina extends ActionBarActivity implements AdapterView.OnItemSele
     private Spinner s;
     private List<String> lista;
     String resultado;
-    String resultados="";
+    String resultados = "";
     ArrayList<String> rutas;
 
-    cursoQL chelpp=new cursoQL(this, "DB", null, 1);
+    cursoQL chelpp = new cursoQL(this, "DB", null, 1);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eliminar);
 
-        s= (Spinner)findViewById(R.id.Spinner);
-        lista =new ArrayList<String>();
-        s=(Spinner)this.findViewById(R.id.Spinner);
+        s = (Spinner) findViewById(R.id.Spinner);
+        lista = new ArrayList<String>();
+        s = (Spinner) this.findViewById(R.id.Spinner);
 
         mostrar();
-
 
 
         s.setOnItemSelectedListener(this);
@@ -47,46 +46,35 @@ public class elimina extends ActionBarActivity implements AdapterView.OnItemSele
     }
 
 
+    public void mostrar() {
 
-    public void mostrar (){
+        lista = new ArrayList<String>();
 
-        lista =new ArrayList<String>();
+        SQLiteDatabase op = chelpp.getReadableDatabase();
+        Cursor cursor = op.rawQuery("SELECT * FROM favoritos group by ruta", null);
 
-        SQLiteDatabase op=chelpp.getReadableDatabase();
-        Cursor cursor=op.rawQuery("SELECT * FROM favoritos group by ruta", null);
-
-        if(cursor.moveToFirst()){
-            do{
-                resultados=cursor.getString(1);
-                resultado+=cursor.getString(1);
+        if (cursor.moveToFirst()) {
+            do {
+                resultados = cursor.getString(1);
+                resultado += cursor.getString(1);
 
 
-                ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,lista);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 s.setAdapter(adapter);
 
                 lista.add(resultados);
-            }while(cursor.moveToNext());
+            } while (cursor.moveToNext());
 
         }
-
-
-
-
-
 
 
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
-
             @Override
             public void onItemSelected(AdapterView<?> view, View arg1,
                                        int texto, long arg3) {
-
-
-
-
 
 
             }
@@ -110,7 +98,7 @@ public class elimina extends ActionBarActivity implements AdapterView.OnItemSele
         //Mostramos la selección actual del Spinner
         // Toast.makeText(this,"Selección actual: "+selection,Toast.LENGTH_SHORT).show();
 
-        ruta=selection;
+        ruta = selection;
     }
 
     @Override

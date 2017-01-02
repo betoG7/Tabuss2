@@ -35,12 +35,12 @@ public class Principio extends FragmentActivity {
 
     private static final String FAVS = "Favoritos";
     private static final String ALARM = "Alarma";
-    public static double lat = 0.0;
+    /*public static double lat = 0.0;
     public static double longi = 0.0;
     LocationManager locationManager;
     EditText editText;
 
-    public static double getLat() {
+   /* public static double getLat() {
         return lat;
     }
 
@@ -54,7 +54,7 @@ public class Principio extends FragmentActivity {
 
     public static void setLongi(double longi) {
         Principio.longi = longi;
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,19 +62,19 @@ public class Principio extends FragmentActivity {
         setContentView(R.layout.activity_button);
 
 
-        locationManager=(LocationManager)getSystemService(LOCATION_SERVICE);
+        /*locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         //SI ESTA DESACTIVADO
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            /**Toast.makeText(this,"GPS desactivado",Toast.LENGTH_SHORT).show();
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            *//**Toast.makeText(this,"GPS desactivado",Toast.LENGTH_SHORT).show();
 
-            Intent i=new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            startActivity(i);
-            if(i==null)
-            {
-                System.exit(0);
-            }**/
-            AlertDialog.Builder alerBuilder=new AlertDialog.Builder(this);
+             Intent i=new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+             startActivity(i);
+             if(i==null)
+             {
+             System.exit(0);
+             }**//*
+            AlertDialog.Builder alerBuilder = new AlertDialog.Builder(this);
             alerBuilder.setMessage("GPS desactivado.")
                     .setCancelable(false)
                     .setPositiveButton("Activar", new DialogInterface.OnClickListener() {
@@ -96,73 +96,71 @@ public class Principio extends FragmentActivity {
             alerBuilder.create();
             alerBuilder.show();
 
-        }
-        else{
+        } else {
 
-            if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-                Toast.makeText(this, "GPS Desactivado, debes tenerlo activado",Toast.LENGTH_SHORT).show();
-            }else {
+            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                Toast.makeText(this, "GPS Desactivado, debes tenerlo activado", Toast.LENGTH_SHORT).show();
+            } else {
                 LocationGPS locationGPS = new LocationGPS();
                 locationGPS.execute();
             }
-        }
-
+        }*/
 
 
     }
 
-    @Override
+   /* @Override
     protected void onRestart() {
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             Intent GPSIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(GPSIntent);
-            Toast.makeText(this, "GPS Desactivado, debes tenerlo activado",Toast.LENGTH_SHORT).show();
-        }else {
+            Toast.makeText(this, "GPS Desactivado, debes tenerlo activado", Toast.LENGTH_SHORT).show();
+        } else {
             LocationGPS locationGPS = new LocationGPS();
             locationGPS.execute();
         }
         super.onRestart();
 
-    }
+    }*/
 
-    public void mapaVer(View v){
-        Intent i=new Intent(this, MapsActivity.class);
+    public void mapaVer(View v) {
+        Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
 
     }
 
-    public void mapaBanquetes(View v){
-        Intent i=new Intent(this,Banquetes.class);
+    public void mapaBanquetes(View v) {
+        Intent i = new Intent(this, Banquetes.class);
         startActivity(i);
     }
 
-    public void mapaLaureles(View v){
-        Intent i=new Intent(this,Laureles.class);
+    public void mapaLaureles(View v) {
+        Intent i = new Intent(this, Laureles.class);
         startActivity(i);
     }
 
-    public void mapaPotre(View v){
-        Intent i=new Intent(this,Potrerillos.class);
+    public void mapaPotre(View v) {
+        Intent i = new Intent(this, Potrerillos.class);
         startActivity(i);
     }
 
-    public void mapaBanVerde(View v){
-        Intent i=new Intent(this,BanquetesVerde.class);
+    public void mapaBanVerde(View v) {
+        Intent i = new Intent(this, BanquetesVerde.class);
         startActivity(i);
     }
 
-    public void mapaRioG(View v){
-        Intent i=new Intent(this, RioGrande.class);
+    public void mapaRioG(View v) {
+        Intent i = new Intent(this, RioGrande.class);
         startActivity(i);
     }
 
-    public void mapaVascoVerde(View v){
-        Intent i=new Intent(this, VascoV.class);
+    public void mapaVascoVerde(View v) {
+        Intent i = new Intent(this, VascoV.class);
         startActivity(i);
     }
 
-    public void mapaVascoRojo(View v){
-        Intent i=new Intent(this, VascoR.class);
+    public void mapaVascoRojo(View v) {
+        Intent i = new Intent(this, VascoR.class);
         startActivity(i);
     }
 
@@ -176,29 +174,23 @@ public class Principio extends FragmentActivity {
         startActivity(i);
     }
 
-    @Override
-    protected void onDestroy() {
-        //LocationListener locationListener=new LL();
-        //locationManager.removeUpdates(locationListener);
-        // Toast.makeText(this,"OnDestroy", Toast.LENGTH_SHORT).show();
-        super.onDestroy();
-    }
 
-    public class LocationGPS extends AsyncTask<Void,Void,Void>{
+
+   /* public class LocationGPS extends AsyncTask<Void, Void, Void> {
 
         public LL ll;
-        ProgressDialog progressDialog=null;
+        ProgressDialog progressDialog = null;
 
         @Override
         protected void onPreExecute() {
-            ll=new LL();
+            ll = new LL();
 
-            locationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
-                    0,0, ll
+                    0, 0, ll
             );
             //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,ll);
 
@@ -211,7 +203,6 @@ public class Principio extends FragmentActivity {
             progressDialog.setCanceledOnTouchOutside(false);
 
 
-
             progressDialog.show();
         }
 
@@ -219,13 +210,13 @@ public class Principio extends FragmentActivity {
         protected void onPostExecute(Void aVoid) {
             progressDialog.dismiss();
 
-           // editText=(EditText)findViewById(R.id.editText);
+            // editText=(EditText)findViewById(R.id.editText);
             //editText.setText("Lati: "+lat +" ,Long: "+longi);
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-            while(lat==0.0){
+            while (lat == 0.0) {
 
             }
             return null;
@@ -233,19 +224,19 @@ public class Principio extends FragmentActivity {
 
 
     }
-
-    public class LL implements LocationListener{
+*/
+    /*public class LL implements LocationListener {
 
         @Override
         public void onLocationChanged(Location location) {
-            int lati=(int)location.getLatitude();
-            int lon=(int)location.getLongitude();
+            int lati = (int) location.getLatitude();
+            int lon = (int) location.getLongitude();
 
-            String infoloc=location.getProvider();
-            try{
-                lat=location.getLatitude();
-                longi=location.getLongitude();
-            }catch(Exception e){
+            String infoloc = location.getProvider();
+            try {
+                lat = location.getLatitude();
+                longi = location.getLongitude();
+            } catch (Exception e) {
 
             }
         }
@@ -265,9 +256,6 @@ public class Principio extends FragmentActivity {
 
         }
     }
-
-
-
-
+*/
 
 }

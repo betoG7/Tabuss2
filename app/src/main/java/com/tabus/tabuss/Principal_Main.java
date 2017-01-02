@@ -16,8 +16,8 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 public class Principal_Main extends ActionBarActivity implements View.OnClickListener {
 
 
-    private static  final String FAVS="Favoritos";
-    private static final String ALARM="Alarma";
+    private static final String FAVS = "Favoritos";
+    private static final String ALARM = "Alarma";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +27,12 @@ public class Principal_Main extends ActionBarActivity implements View.OnClickLis
         //getSupportActionBar().setIcon(R.drawable.icon_small);
 
         FAB();
-      // sendSMS("3521251968", "t020s015n123456");
+        // sendSMS("3521251968", "t020s015n123456");
 
     }
 
 
-
-    private void FAB(){
+    private void FAB() {
 
         ImageView imageView = new ImageView(this); // Create an icon
         imageView.setImageResource(R.drawable.ic_add_white_24dp);
@@ -43,7 +42,6 @@ public class Principal_Main extends ActionBarActivity implements View.OnClickLis
                 .setContentView(imageView)
                 .setBackgroundDrawable(R.drawable.selector_button)
                 .build();
-
 
 
         // repeat many times:
@@ -59,7 +57,6 @@ public class Principal_Main extends ActionBarActivity implements View.OnClickLis
         SubActionButton buttonItemALARM = itemBuilder.setContentView(itemALARM).build();
 
 
-
         buttonItemFAVS.setTag(FAVS);
         buttonItemALARM.setTag(ALARM);
 
@@ -71,58 +68,59 @@ public class Principal_Main extends ActionBarActivity implements View.OnClickLis
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(buttonItemFAVS)
                 .addSubActionView(buttonItemALARM)
-                        // ...
+                // ...
                 .attachTo(actionButton)
                 .build();
 
 
-
     }
+
     @Override
     public void onClick(View v) {
 
-        if(v.getTag().equals(FAVS)){
+        if (v.getTag().equals(FAVS)) {
 
-            Intent i=new Intent(this,favoritos.class);
+            Intent i = new Intent(this, favoritos.class);
             startActivity(i);
         }
-        if(v.getTag().equals(ALARM)){
-            Intent i=new Intent(this, Alarma.class);
+        if (v.getTag().equals(ALARM)) {
+            Intent i = new Intent(this, Alarma.class);
             startActivity(i);
         }
 
     }
 
-    public void Route(View v){
+    public void Route(View v) {
 
-        Intent i=new Intent(this, Principio.class);
-        startActivity(i);
-    }
-    public void Favor(View v){
-
-        Intent i=new Intent(this, favoritos.class);
-        startActivity(i);
-    }
-    public void Alarmass(View v){
-        Intent i=new Intent(this, Alarma.class);
+        Intent i = new Intent(this, Principio.class);
         startActivity(i);
     }
 
+ /*   public void Favor(View v) {
+
+        Intent i = new Intent(this, favoritos.class);
+        startActivity(i);
+    }
+
+    public void Alarmass(View v) {
+        Intent i = new Intent(this, Alarma.class);
+        startActivity(i);
+    }*/
 
 
-/**    @Override
-    protected void onDestroy() {
-        finish();
-        super.onDestroy();
-    }**/
+    /**
+     * @Override protected void onDestroy() {
+     * finish();
+     * super.onDestroy();
+     * }
+     **/
 
 
+   /* public void sendSMS(String phoneNumber, String message) {
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
 
-public void sendSMS(String phoneNumber,String message){
-    SmsManager sms =SmsManager.getDefault();
-    sms.sendTextMessage(phoneNumber, null, message, null, null);
-
-}
+    }*/
 
 
 }

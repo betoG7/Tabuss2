@@ -24,24 +24,25 @@ import com.tabus.tabuss.cursoQL;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
+
 /**
  * Created by Humberto on 02/05/2015.
  */
 public class RioGrande extends FragmentActivity {
 
     LocationManager locationManager;
-    Principio pri=new Principio();
-    SMSReceiver smsre=new SMSReceiver();
-    double lt= smsre.getLati();
-    double ln= smsre.getLongi();
+    Principio pri = new Principio();
+    SMSReceiver smsre = new SMSReceiver();
+    double lt = smsre.getLati();
+    double ln = smsre.getLongi();
     double latitud, longitud;
     cursoQL ch = new cursoQL(this, "BD", null, 1);
-    String resultados="";
-    String resultado="";
+    String resultados = "";
+    String resultado = "";
     String llenado[];
     int vari;
-    double lat = Principio.getLat();
-    double longi = Principio.getLongi();
+    /*double lat = Principio.getLat();
+    double longi = Principio.getLongi();*/
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private CameraUpdate cameraUpdate;
 
@@ -51,20 +52,20 @@ public class RioGrande extends FragmentActivity {
         setContentView(R.layout.activity_maps);
         setUpMapIfNeeded();
 
-        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         notificationManager.cancelAll();
 
-        Timer timer =  new  Timer ();
-        timer . schedule ( new  TimerTask ()  {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
             @Override
-            public  void run ()  {
+            public void run() {
 
-                runOnUiThread ( new  Runnable (){
+                runOnUiThread(new Runnable() {
                     @Override
-                    public  void run (){
+                    public void run() {
                         //
-                        resultados="";
+                        resultados = "";
                         SQLiteDatabase op = ch.getReadableDatabase();
                         Cursor cursor = op.rawQuery("SELECT * FROM gpscamionz ORDER BY id DESC LIMIT 1", null);
                         if (cursor.moveToFirst()) {
@@ -76,67 +77,66 @@ public class RioGrande extends FragmentActivity {
                             while (cursor.moveToNext());
 
                         }
-                        vari= resultados.length();
-                        llenado=new String[vari];
-                        int a=0;
-                        StringTokenizer tokens =new StringTokenizer(resultados,": ");
-                        while(tokens.hasMoreTokens()){
-                            if(a<vari){
-                                llenado[a]=tokens.nextToken();
+                        vari = resultados.length();
+                        llenado = new String[vari];
+                        int a = 0;
+                        StringTokenizer tokens = new StringTokenizer(resultados, ": ");
+                        while (tokens.hasMoreTokens()) {
+                            if (a < vari) {
+                                llenado[a] = tokens.nextToken();
                                 a++;
                             }
                         }
 
 
-                     //   Toast.makeText(this, resultados + " " + resultado + "" + q, Toast.LENGTH_SHORT).show();
+                        //   Toast.makeText(this, resultados + " " + resultado + "" + q, Toast.LENGTH_SHORT).show();
                         //  String a = sm.a;
-                        latitud= Double.parseDouble(llenado[1]);
-                        longitud= Double.parseDouble(llenado[3]);
-
+                        latitud = Double.parseDouble(llenado[1]);
+                        longitud = Double.parseDouble(llenado[3]);
 
 
                         mMap.addPolyline(new PolylineOptions().geodesic(true)
-                                        .add(new LatLng(20.351720, -102.058189)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.351008, -102.057062)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.351894, -102.056689)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.354110, -102.053106)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.346641, -102.026134)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343900, -102.025329)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343638, -102.024127)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.341722, -102.020104)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.342044, -102.019031)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.341802, -102.018301)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.339046, -102.017314)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.337331, -102.017829)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.336516, -102.018312)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.329635, -102.016531)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.328598, -102.016810)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.326596, -102.017325)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.325258, -102.017229)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.324463, -102.017025)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.324141, -102.016778)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.324302, -102.012336)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.323689, -102.007079)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.322786, -102.005754)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.322569, -102.005604)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.320904, -102.002675)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.323485, -102.002391)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.323173, -101.999880)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.325643, -101.998893)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.334013, -101.998324)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.334139, -102.002439)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.335216, -102.002294)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.335683, -102.001623)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.335693, -102.000476)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.336926, -102.000459)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.337062, -102.001044)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343783, -102.000742)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343813, -102.005368)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.344108, -102.005416)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343938, -102.006895)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.345285, -102.007054)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.345841, -102.003523)).width(10).color(Color.GREEN)
-                                        .add(new LatLng(20.343855, -102.003388)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.351720, -102.058189)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.351008, -102.057062)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.351894, -102.056689)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.354110, -102.053106)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.346641, -102.026134)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343900, -102.025329)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343638, -102.024127)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.341722, -102.020104)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.342044, -102.019031)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.341802, -102.018301)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.339046, -102.017314)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.337331, -102.017829)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.336516, -102.018312)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.329635, -102.016531)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.328598, -102.016810)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.326596, -102.017325)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.325258, -102.017229)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.324463, -102.017025)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.324141, -102.016778)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.324302, -102.012336)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.323689, -102.007079)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.322786, -102.005754)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.322569, -102.005604)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.320904, -102.002675)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.323485, -102.002391)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.323173, -101.999880)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.325643, -101.998893)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.334013, -101.998324)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.334139, -102.002439)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.335216, -102.002294)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.335683, -102.001623)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.335693, -102.000476)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.336926, -102.000459)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.337062, -102.001044)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343783, -102.000742)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343813, -102.005368)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.344108, -102.005416)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343938, -102.006895)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.345285, -102.007054)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.345841, -102.003523)).width(10).color(Color.GREEN)
+                                .add(new LatLng(20.343855, -102.003388)).width(10).color(Color.GREEN)
 
                         );
 
@@ -219,21 +219,17 @@ public class RioGrande extends FragmentActivity {
                                 .snippet("Iglesia Cuitzillo"));
 
                         mMap.addMarker(new MarkerOptions()
-                                .position(new LatLng(20.327451, -101.998875 ))
+                                .position(new LatLng(20.327451, -101.998875))
                                 .title("Parada")
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.busstop))
                                 .snippet("Fracc. Cuitzillo"));
-
-
-
 
 
                     }
                 });
 
             }
-        },  0 ,  5000 );
-
+        }, 0, 5000);
 
 
     }
@@ -264,10 +260,10 @@ public class RioGrande extends FragmentActivity {
 
         //mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title("Marker"));20.349577, -102.036094
         //cameraUpdate= CameraUpdateFactory.newLatLngZoom(new LatLng(20.349577, -102.036094),15);
-        cameraUpdate= CameraUpdateFactory.newLatLngZoom(new LatLng(lat, longi), 15);
+        cameraUpdate= CameraUpdateFactory.newLatLngZoom(new LatLng(20.349577, -102.036094),15);
+//        cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(lat, longi), 15);
         mMap.animateCamera(cameraUpdate);
     }
-
 
 
 }

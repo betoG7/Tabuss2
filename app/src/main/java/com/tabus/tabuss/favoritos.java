@@ -17,14 +17,14 @@ import java.util.List;
 /**
  * Created by Humberto on 29/05/2015.
  */
-public class favoritos extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
+public class favoritos extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
     String sqll;
-    String resultado="";
+    String resultado = "";
     ArrayList<String> rutas;
     ArrayAdapter<String> adapter;
     ListView lstView;
     String ruta;
-    cursoQL chelpp=new cursoQL(this, "DB", null, 1);
+    cursoQL chelpp = new cursoQL(this, "DB", null, 1);
 
 
     private Spinner s;
@@ -42,12 +42,11 @@ public class favoritos extends ActionBarActivity implements AdapterView.OnItemSe
         // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_spinner_item,rutas);
 
 
-        s= (Spinner)findViewById(R.id.Spinner);
-        lista =new ArrayList<String>();
-        s=(Spinner)this.findViewById(R.id.Spinner);
+        s = (Spinner) findViewById(R.id.Spinner);
+        lista = new ArrayList<String>();
+        s = (Spinner) this.findViewById(R.id.Spinner);
 
         s.setOnItemSelectedListener(this);
-
 
 
         //  s.setAdapter(new ArrayAdapter<String>(this, R.layout.textview_spinner, rutas));
@@ -73,6 +72,7 @@ public class favoritos extends ActionBarActivity implements AdapterView.OnItemSe
 
         //
     }
+
     public void cambio(View v) {
 
         Intent intentala = new Intent(favoritos.this, elimina.class);
@@ -104,15 +104,12 @@ public class favoritos extends ActionBarActivity implements AdapterView.OnItemSe
     }
 
 
+    protected void datosSpinner() {
 
 
-
-    protected void datosSpinner(){
-
-
-        s= (Spinner)findViewById(R.id.Spinner);
-        lista =new ArrayList<String>();
-        s=(Spinner)this.findViewById(R.id.Spinner);
+        s = (Spinner) findViewById(R.id.Spinner);
+        lista = new ArrayList<String>();
+        s = (Spinner) this.findViewById(R.id.Spinner);
 
 
         ArrayAdapter<CharSequence> adapter;
@@ -165,12 +162,12 @@ public class favoritos extends ActionBarActivity implements AdapterView.OnItemSe
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         this.position = position;
-        String  selection = parent.getItemAtPosition(position).toString();
+        String selection = parent.getItemAtPosition(position).toString();
 
         //Mostramos la selección actual del Spinner
         //  Toast.makeText(this,"Selección actual: "+selection,Toast.LENGTH_SHORT).show();
 
-        ruta=selection;
+        ruta = selection;
     }
 
     @Override

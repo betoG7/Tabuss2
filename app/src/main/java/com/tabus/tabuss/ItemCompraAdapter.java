@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by Humberto on 29/05/2015.
  */
-public class ItemCompraAdapter extends BaseAdapter{
+public class ItemCompraAdapter extends BaseAdapter {
 
     protected Activity activity;
     protected ArrayList<ItemCompra> items;
@@ -42,9 +42,9 @@ public class ItemCompraAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View vi=convertView;
+        View vi = convertView;
 
-        if(convertView == null) {
+        if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             vi = inflater.inflate(R.layout.list_item_layout, null);
         }

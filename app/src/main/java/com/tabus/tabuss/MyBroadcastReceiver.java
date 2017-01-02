@@ -30,10 +30,11 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
     private final int NOTIFICATION_ID = 1010;
 
-    String resultados="";
-    String ruta="";
-    int cont_alarm=0;
-    veralarmas2 v=new veralarmas2();
+    String resultados = "";
+    String ruta = "";
+    int cont_alarm = 0;
+    veralarmas2 v = new veralarmas2();
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -67,8 +68,8 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         if (cursor.moveToFirst()) {
             do {
                 resultados += "" + cursor.getString(0);
-                ruta= "" + cursor.getString(7);
-             //   Toast.makeText(context, ""+cursor.getString(0), Toast.LENGTH_SHORT).show();
+                ruta = "" + cursor.getString(7);
+                //   Toast.makeText(context, ""+cursor.getString(0), Toast.LENGTH_SHORT).show();
             }
             while (cursor.moveToNext());
 
@@ -90,7 +91,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         // Cursor cursor = op.rawQuery("SELECT * FROM alarmas", null);
         //  Toast.makeText(context, ""+cont_alarm, Toast.LENGTH_SHORT).show();
 
-        Notification.Builder builder =new Notification.Builder(context) ;
+        Notification.Builder builder = new Notification.Builder(context);
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.icon, "¡Alarma!", System.currentTimeMillis());
@@ -100,35 +101,35 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         contentView.setTextViewText(R.id.txt_notification, ruta);
 
         notification.contentView = contentView;
-        Uri defaultSound= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        notification.sound =defaultSound;
+        Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        notification.sound = defaultSound;
         builder.setSound(defaultSound);
         Intent notificationIntent = new Intent(context, Principal_Main.class);
-        if(ruta.equalsIgnoreCase("Banquetes linea roja")){
+        if (ruta.equalsIgnoreCase("Banquetes linea roja")) {
             notificationIntent = new Intent(context, Banquetes.class);
         }
-        if(ruta.equalsIgnoreCase("Banquetes linea verde")){
+        if (ruta.equalsIgnoreCase("Banquetes linea verde")) {
             notificationIntent = new Intent(context, BanquetesVerde.class);
         }
-        if(ruta.equalsIgnoreCase("Vasco linea roja")){
+        if (ruta.equalsIgnoreCase("Vasco linea roja")) {
             notificationIntent = new Intent(context, VascoR.class);
         }
-        if(ruta.equalsIgnoreCase("Vasco linea verde")){
+        if (ruta.equalsIgnoreCase("Vasco linea verde")) {
             notificationIntent = new Intent(context, VascoV.class);
         }
-        if(ruta.equalsIgnoreCase("Lienzo charro")){
-            notificationIntent = new Intent(context,Lienzo.class);
+        if (ruta.equalsIgnoreCase("Lienzo charro")) {
+            notificationIntent = new Intent(context, Lienzo.class);
         }
-        if(ruta.equalsIgnoreCase("Potrerillos")){
+        if (ruta.equalsIgnoreCase("Potrerillos")) {
             notificationIntent = new Intent(context, Potrerillos.class);
         }
-        if(ruta.equalsIgnoreCase("Laureles")){
+        if (ruta.equalsIgnoreCase("Laureles")) {
             notificationIntent = new Intent(context, Laureles.class);
         }
-        if(ruta.equalsIgnoreCase("Delta")){
+        if (ruta.equalsIgnoreCase("Delta")) {
             notificationIntent = new Intent(context, MapsActivity.class);
         }
-        if(ruta.equalsIgnoreCase("Rio Grande")){
+        if (ruta.equalsIgnoreCase("Rio Grande")) {
             notificationIntent = new Intent(context, RioGrande.class);
         }
 
@@ -139,11 +140,11 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         notificationManager.notify(NOTIFICATION_ID, notification);
 
 
-
         v.vibrate(10000);
-        borra( context);
+        borra(context);
 
     }
+
     public void borra(Context context) {
         cursoQL ch = new cursoQL(context, "BD", null, 1);
         SQLiteDatabase op = ch.getReadableDatabase();
@@ -151,7 +152,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         op.execSQL("DELETE FROM alarmas WHERE id='" + cont_alarm + "'");
 
         op.close();
-        Toast.makeText(context, "entro"+cont_alarm, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "entro" + cont_alarm, Toast.LENGTH_SHORT).show();
     }
 
  /*   String arregloaño [];
@@ -200,7 +201,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
 
 
     }*/
-
 
 
 }
